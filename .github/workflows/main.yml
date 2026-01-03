@@ -1,0 +1,28 @@
+name : Postman Collection Workflow
+on : 
+  push:
+    branches : [main]
+  workflow_dispatch :
+  schedule:
+    - cron: 30 02 * * * # 8.00 AM IST Everyday
+    - cron: 00 14 * * * # 7.30 PM IST Everyday
+    - cron: 00 06 * * 1-5 # 11.30 AM IST Monday to Friday
+jobs:
+  run-postman-tests: # Name of the job
+    runs-on: ubuntu-latest # VM on which virtual machine, your execution is going to happen.
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v6.0.1
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6.1.0
+        with:
+          node-version: 22
+      - name: Install Newman and HTML Extra globally
+        run: |
+              newman install -g newman
+              newman install -g newman-reporter-htmlextra
+      - name: Run the Postman Collection with Newman
+        run: |
+              newman run 
