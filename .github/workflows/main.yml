@@ -1,1 +1,44 @@
+name: Postman Inwarranty Collection Workflow
 
+on:
+  push:
+    branches:
+      -main
+  workflow_dispatch:
+  schedule:
+    - cron: 30 13 * * * # 7 PM IST
+    - cron: 00 06 * * * # 11.30 AM IST
+    - cron: 00 06 * * 1-5 # same as above but only from Monday to Friday
+
+jobs:
+  run-postman-test:  # Name of the job
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v6.0.1
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6.1.0
+        with:
+          version: 22
+      - name: Install Newman and HTML Extra Reporter
+        run: |
+              npm install -g newman
+              npm install -g newman-reporter-htmlextra
+      - name: Run the postman collection
+        run: |
+              newman run In-WarrantyFlow-Data-Driven.postman_collection \
+              -e QA.postman_environment.json \
+              -d testdata.csv \
+              -r cli,htmlextra
+      - name: Upload the html report to artifacts
+        if: always()
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: Newman Report
+          path: newman/*.html
+          
+      
+  
+  
+    
