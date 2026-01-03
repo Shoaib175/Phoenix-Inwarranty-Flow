@@ -2,8 +2,7 @@ name: Postman Inwarranty Collection Workflow
 
 on:
   push:
-    branches:
-      -main
+    branches: [main]
   workflow_dispatch:
   schedule:
     - cron: 30 13 * * * # 7 PM IST
