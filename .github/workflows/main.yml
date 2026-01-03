@@ -29,3 +29,6 @@ jobs:
               -e QA.postman_environment.json \
               -d testdata.csv \
               -r cli,htmlextra
+              
+      - name: Upload HTML Report to Artifact
+        uses: actions/upload-artifact@v6.0.0
