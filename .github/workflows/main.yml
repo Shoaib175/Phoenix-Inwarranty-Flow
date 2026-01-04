@@ -29,7 +29,9 @@ jobs:
               newman run In-WarrantyFlow-Data-Driven.postman_collection \
               -e QA.postman_environment.json \
               -d testdata.csv \
-              -r cli,htmlextra
+              -r cli,htmlextra \
+              --reporter-htmlextra-export ./newman/index.html  # if we give this code, our htmlextra report will be saved with the name index.html, which makes it easy to access
+              # the report on github pages directly on just a click of the link
       - name: Upload the html report to artifacts
         if: always()
         uses: actions/upload-artifact@v6.0.0
