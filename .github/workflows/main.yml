@@ -11,7 +11,7 @@ on:
 
 jobs:
   run-postman-test:  # Name of the job
-    runs-on: ubuntu-latest
+    runs-on: ec2-github-runner
     
     steps:
       - name: Checkout the code
