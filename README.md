@@ -9,7 +9,7 @@ The latest report is mailed to the team members using GMAIL SMTP
 ## 👤 Author
 
 **Shoaib Shaikh**  
-SDET with **4+ years of experience** designing and implementing scalable, CI/CD-driven automation frameworks for web and API platforms.
+SDET with **4.5+ years of experience** designing and implementing scalable, CI/CD-driven automation frameworks for web and API platforms.
 
 ### Core Expertise
 - UI Automation: Selenium WebDriver, Playwright, Cypress  
